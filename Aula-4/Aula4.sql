@@ -272,11 +272,11 @@ SELECT salario*12 AS "Salário Anual" FROM funcionario
 -- 15) Exibir a relação entre a capacidade da sala e o número total de
 -- filmes exibidos nela
 
-SELECT s.capacidade, COUNT(fes.filme_id) AS num_filmes_exibidos
+SELECT s.nome AS sala, s.capacidade, COUNT (fs.filme_id) AS total_filmes,
+(COUNT (fs.filme_id) / nullif (s.capacidade, 0)) AS filmes_por assento
 FROM sala s
-JOIN filme_exibido_sala fes ON s.id_sala = fes.sala_id
+LEFT JOIN filme_exibido_sala fs ON s.id_sala = fs.sala_id
 GROUP BY s.id_sala, s.capacidade;
-
 
 
 

@@ -21,6 +21,15 @@
             "password": "root",
             "username": "postgres",
             "connectionTimeout": 30
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "PG Escola",
+            "database": "Aula5",
+            "username": "postgres"
         }
     ]
 }
