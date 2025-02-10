@@ -55,4 +55,27 @@ FROM instrutor i
 JOIN turma t ON i.id_instrutor = t.instrutor_id
 WHERE t.nome LIKE '%Crossfit%' OR t.nome LIKE '%Yoga%';
 
+-- 8️. Listar os alunos que  estão matriculados em mais de uma turma
+
+SELECT a.nome AS "Nome do Aluno"
+FROM aluno a
+GROUP BY a.nome
+HAVING COUNT(a.turma_id) > 1;
+
+-- 9. Encontrar as turmas que possuem a maior quantidade de alunos
+
+SELECT t.nome AS "Nome da Turma", COUNT(a.cod_matricula) AS "Quantidade de Alunos"
+FROM turma t
+JOIN aluno a ON t.id_turma = a.turma_id
+GROUP BY t.nome
+ORDER BY COUNT(a.cod_matricula) DESC
+LIMIT 1;
+
+-- 10. Listar os alunos que não compareceram a nenhuma aula
+-- (Usa NOT IN para encontrar alunos sem registros na tabela chamada.
+
+SELECT a.nome AS "Nome do Aluno"
+FROM aluno a
+WHERE a.cod_matricula NOT IN (
+    SELECT matricula_cod
 
