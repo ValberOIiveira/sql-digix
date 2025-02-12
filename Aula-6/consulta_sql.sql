@@ -10,4 +10,6 @@ FROM
 JOIN 
     Pessoa P ON UR.id_proprietario = P.id_pessoa
 JOIN 
-    Edificacao E ON UR.id_edificacao = E.id_edificacao;
+    Edificacao E ON UR.id_edificacao = E.id_edificacao
+ORDER BY
+    UR.metragem_unidade;
